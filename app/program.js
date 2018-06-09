@@ -1,3 +1,5 @@
+var OSinfo = require('../modules/OSinfo');
+
 process.stdin.setEncoding('utf-8');
 
 process.stdin.on('readable', function(){
@@ -6,13 +8,16 @@ process.stdin.on('readable', function(){
 		var instruction = input.toString().trim()
 		switch (instruction) {
 			case '/exit':
-				process.stdout.write('Quitting app!');
+				process.stdout.write('Quitting app!\n');
 				process.exit();
 			case '/version':
 				console.log(process.env);
 				break;
 			case '/lang':
 				console.log(process.env.lang);
+				break;
+			case '/getOSinfo':
+				OSinfo.print();
 				break;
 			default:
 				process.stderr.write('Wrong instruction!');
